@@ -1,0 +1,54 @@
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+  # def run
+  #   #add file selector?
+  #   puts "Welcome to Event Reporter!"
+  #   command = ""
+  #   while command != "q"
+  #     printf "Enter command or 'help' for more info."
+  #     command = gets.chomp.downcase
+  #     case command
+  #       # COMMANDS
+  #       # queue WIPE
+  #       # queue PRINT
+  #       # queue SAVE
+  #       # queue FIND
+  #       # help
+
+  #       when "q" then puts "Goodbye!"
+  #       when "h" then #when includes help? <--figure out input logic
+  #         #attribute = (whatever is after 'help' or 'h')
+  #         #help(attribute)
+  #       when "clear" then
+  #         #Queue.clear
+  #       when "print" || "p" then
+  #         #Queue.print
+  #       when "save" || "s" then
+  #         #Queue.save
+  #       when 'find' or "f" then
+  #         puts "Enter URL to shorten"
+  #         original_url = gets.chomp
+  #         puts shorten(original_url)
+  #       when "turl" then
+  #         puts "Enter Tweet"
+  #         message = gets.chomp
+  #         puts "Enter URL"
+  #         url = shorten(gets.chomp)
+  #         message_with_link = [message, url].join(" ")
+  #         tweet(message_with_link)
+  #       else
+  #         puts "Sorry, I don't know how to #{command}. Type 'help' for help."
+  #     end
+  #   end
+  # end
