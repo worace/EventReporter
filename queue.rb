@@ -1,31 +1,42 @@
 require 'csv'
+module EventReporter
+  class Queue
+  # "Queue" acts as a data structure for holding current query results
+  #  queue will act as an array of Attendee objects
 
-class Queue
-# "Queue" acts as a data structure for holding current query results
-#  queue will act as an array of Attendee objects
-
-# file object 
-
-
-  def initialize
-  end
-
-  def call(params)
-    "Running Queue sub-function #{params[0]}"
-  end
-
-  def self.valid_parameters?(parameters)
-    if !%w(count clear print save).include?(parameters[0])
-      false
-    elsif parameters[0] == "print" 
-      parameters.count == 1 || (parameters.count == 3 && parameters[1] == "by")
-    elsif parameters[0] == "save"
-      parameters.count == 1 || (parameters.count ==3 && parameters[1] == "to")
-    else
-      true
+    def initialize
+      @queue = []
     end
-  end
 
+    def call(params)
+      "Running Queue sub-function #{params[0]}"
+
+      # clear
+      # print
+      # save
+      # find
+    end
+
+    def self.valid_parameters?(parameters)
+      if !%w(count clear print save).include?(parameters[0])
+        false
+      elsif parameters[0] == "print" 
+        parameters.count == 1 || (parameters.count == 3 && parameters[1] == "by")
+      elsif parameters[0] == "save"
+        parameters.count == 1 || (parameters.count ==3 && parameters[1] == "to")
+      else
+        true
+      end
+    end
+
+    def clear
+    end
+
+    def find ()
+    end
+
+  end
+end
   # def clear
   #   # wipes the queue (return empty queue object?)
   # end
@@ -62,4 +73,4 @@ class Queue
   #   # - OR searches: match either attribute
   #   # - find within existing queue results (self method? find without wiping queue first?)
   # end
-end
+# end

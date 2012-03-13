@@ -1,13 +1,13 @@
 require 'csv'
 require './attendee'
 require './event_reporter_cli'
+module Even
+  class EventReporter
 
-class EventReporter
-
-
+  end
 end
 
-  cli = EventReporterCLI
+  cli = CLI
 
 # er = EventReporter.new('event_attendees.csv')
 

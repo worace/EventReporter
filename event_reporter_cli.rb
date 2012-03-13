@@ -23,39 +23,40 @@ require './help'
 require './search'
 require './command'
 
+module EventReporter
+  class CLI
+    EXIT_COMMANDS = ["quit", "q", "e", "exit"]
 
-class EventReporterCLI
-  EXIT_COMMANDS = ["quit", "q", "e", "exit"]
+    def self.parse_user_input(input)
+      [ input.first.downcase, input[1..-1] ]
+    end
 
-  def self.parse_user_input(input)
-    [ input.first.downcase, input[1..-1] ]
-  end
+    def self.prompt_user
+        puts "enter command > "
+        inputs = gets.strip.split
+    end
 
-  def self.prompt_user
-      puts "enter command > "
-      inputs = gets.strip.split
-  end
+    def self.run
+      puts "Welcome to the EventReporter"
+      command = ""
 
-  def self.run
-    puts "Welcome to the EventReporter"
-    command = ""
+      until EXIT_COMMANDS.include?(command)    
+        inputs = prompt_user
 
-    until EXIT_COMMANDS.include?(command)    
-      inputs = prompt_user
-
-      if EXIT_COMMANDS.include?(inputs[0])
-        command, parameters = parse_user_input(inputs)
-        puts "Goodbye"
-      elsif inputs.any?
-        command, parameters = parse_user_input(inputs)
-        result = Command.execute(command, parameters)
-        puts result
-      else
-        puts "No command entered."
+        if EXIT_COMMANDS.include?(inputs[0])
+          command, parameters = parse_user_input(inputs)
+          puts "Goodbye"
+        elsif inputs.any?
+          command, parameters = parse_user_input(inputs)
+          result = Command.execute(command, parameters)
+          puts result
+        else
+          puts "No command entered."
+        end
       end
     end
-  end
 
+  end
 end
 
-EventReporterCLI.run
+EventReporter::CLI.run
