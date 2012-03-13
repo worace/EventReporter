@@ -19,34 +19,29 @@ class Command
   end
 
  def self.execute(command, parameters)
-    if command == "load"        
-      if EventDataParser.valid_parameters?(parameters)
-        EventDataParser.load(parameters[0])          
-      else
-        puts "Sorry, you specified invalid arguments. Use this format:"
-        puts "load filename.csv"
-      end
-    elsif command == "queue"
-      if Queue.valid_parameters(parameters)
+    if command == "load" && EventDataParser.valid_parameters?(parameters)
+        file = EventDataParser.load(parameters[0])
+        file.print_attendees          
+      # else
+      #   puts "Sorry, you specified invalid arguments. Use this format:"
+      #   puts "load filename.csv"
+    elsif command == "queue" && Queue.valid_parameters?(parameters)
         Queue.new.call(parameters)
-      else
-        puts "Sorry, you specified invalid arguments for queue."
-      end
-    elsif command == "help"
-      if Help.valid_parameters?(parameters)
+      # else
+        # puts "Sorry, you specified invalid arguments for queue."
+    elsif command == "help" && Help.valid_parameters?(parameters)
         Help.new.help_for(parameters)
-      else
-        puts "Sorry, you specified invalid arguments for help"
-      end
-    elsif command == "find"
-      if Search.valid_parameters?(parameters)
+      # else
+      #   error_message(command)
+    elsif command == "find" && Search.valid_parameters?(parameters)
         Search.new.search_for(parameters)
-      else
-        puts "sorry you specified invalid arguments"
-      end
+    else
+      error_message(command)
     end
   end
 
-
+  def self.error_message(command)
+    "Sorry, you specified invalid arguments for #{command}"
+  end
 
 end

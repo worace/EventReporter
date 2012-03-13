@@ -11,7 +11,7 @@ class Queue
   end
 
   def call(params)
-    puts "Running Queue sub-function #{params[0]}"
+    "Running Queue sub-function #{params[0]}"
   end
 
   def self.valid_parameters?(parameters)

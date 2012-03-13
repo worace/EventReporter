@@ -1,6 +1,6 @@
 class Search
   def search_for(parameters)
-    puts "Searching for #{parameters}"
+    "Searching for #{parameters}"
   end
 
   def self.valid_parameters?(parameters)

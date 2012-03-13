@@ -43,9 +43,13 @@ class EventReporterCLI
     until EXIT_COMMANDS.include?(command)    
       inputs = prompt_user
 
-      if inputs.any?
+      if EXIT_COMMANDS.include?(inputs[0])
         command, parameters = parse_user_input(inputs)
-        Command.execute(command, parameters)
+        puts "Goodbye"
+      elsif inputs.any?
+        command, parameters = parse_user_input(inputs)
+        result = Command.execute(command, parameters)
+        puts result
       else
         puts "No command entered."
       end
