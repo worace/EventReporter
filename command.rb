@@ -22,8 +22,7 @@ module EventReporter
    def self.execute(command, parameters)
       if command == "load" && EventDataParser.valid_parameters?(parameters)
         @@attendees = EventDataParser.new(parameters[0])
-        puts @@attendees.inspect
-        puts "Loaded #{parameters[0]}"     
+        puts "Loaded #{@@attendees.count} attendees!"     
       elsif command == "queue" && Queue.valid_parameters?(parameters)
         parameters << @@attendees if @@attendees
         @@queue = Queue.call(parameters)

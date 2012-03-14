@@ -6,7 +6,7 @@ module EventReporter
     # assigns to appropriate instance variables
 
 
-    attr_accessor :regdate, :last_name, :first_name, :email, :homephone,
+    attr_accessor :regdate, :last_name, :first_name, :email_address, :homephone,
                   :street, :city, :state, :zipcode, :keys
 
     def initialize(csv_line = {})
@@ -14,7 +14,7 @@ module EventReporter
       self.regdate = csv_line[:regdate]
       self.last_name = csv_line[:last_name]
       self.first_name = csv_line[:first_name]
-      self.email = csv_line[:email]
+      self.email_address = csv_line[:email_address]
       self.homephone = csv_line[:homephone]
       self.street = csv_line[:street]
       self.city = csv_line[:city]
@@ -36,6 +36,17 @@ module EventReporter
 
     def state
       State.clean(@state)
+    end
+
+    def values
+      # SHADETREE MECHANICS:
+      # First key is a blank space, so skip it
+      # attr accessors up top ^^^ have to exact match to CSV headers
+      #   else self.send(key) will throw NoMethodError
+      # SOL'N - Dynamic generation of attr_accessors based on 
+      #   CSV Headers; initialize based on same
+      #   Thus avoid annoying mismatch of keys etc.
+      values = @keys[1..-1].collect{|key| self.send(key)}
     end
   end
 

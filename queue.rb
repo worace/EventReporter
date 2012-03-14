@@ -41,7 +41,11 @@ module EventReporter
     end
 
     def self.print
-      headers = 
+      headers = @queue.first.keys
+      puts headers
+      @queue.each do |attendee|
+        puts attendee.values.join["\t"]
+      end
     end
 
     def self.clear
