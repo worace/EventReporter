@@ -16,6 +16,7 @@ module EventReporter
 
     def self.call(params)
       log "starting the Queue#call"
+      debugger
       "Running Queue sub-function #{params[0]}"
       case params[0]
       when "find" then find(params)

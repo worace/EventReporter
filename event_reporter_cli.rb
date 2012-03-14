@@ -50,7 +50,7 @@ module EventReporter
     def self.run
       puts "Welcome to the EventReporter"
       command = ""
-
+      @reporter = Command.new
       until EXIT_COMMANDS.include?(command)    
         inputs = prompt_user
         log "Starting a command from CLI.run"
@@ -60,7 +60,7 @@ module EventReporter
           puts "Goodbye"
         elsif inputs.any?
           command, parameters = parse_user_input(inputs)
-          result = Command.execute(command, parameters)
+          @reporter.execute(command, parameters)
           puts result
         else
           puts "No command entered."

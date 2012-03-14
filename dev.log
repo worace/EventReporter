@@ -55,3 +55,6 @@ I, [2012-03-14T11:42:50.211156 #12655]  INFO -- : Starting a command from CLI.ru
 I, [2012-03-14T11:42:50.211371 #12655]  INFO -- : starting the Queue#call
 I, [2012-03-14T11:42:50.212789 #12655]  INFO -- : Ending the Queue#call
 I, [2012-03-14T11:43:52.100187 #12655]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:54:09.936685 #12706]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:54:21.063786 #12706]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:54:21.063977 #12706]  INFO -- : starting the Queue#call
