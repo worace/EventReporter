@@ -21,19 +21,15 @@ module EventReporter
 
    def self.execute(command, parameters)
       if command == "load" && EventDataParser.valid_parameters?(parameters)
-        @file = EventDataParser.new(parameters[0])
+        @@attendees = EventDataParser.new(parameters[0])
+        puts @@attendees.inspect
         puts "Loaded #{parameters[0]}"     
-        # else
-        #   puts "Sorry, you specified invalid arguments. Use this format:"
-        #   puts "load filename.csv"
       elsif command == "queue" && Queue.valid_parameters?(parameters)
-          Queue.new.call(parameters)
-        # else
-          # puts "Sorry, you specified invalid arguments for queue."
+        parameters << @@attendees if @@attendees
+        @@queue = Queue.call(parameters)
+        # puts @@queue.inspect
       elsif command == "help" && Help.valid_parameters?(parameters)
           Help.new.help_for(parameters)
-        # else
-        #   error_message(command)
       elsif command == "find" && Search.valid_parameters?(parameters)
           Search.new.search_for(parameters)
       else

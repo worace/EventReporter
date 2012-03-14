@@ -3,9 +3,13 @@ require './queue'
 require './attendee'
 module EventReporter
   class EventDataParser
+    include Enumerable
 
     CSV_OPTIONS = {:headers => true, :header_converters => :symbol}
     attr_accessor :attendees
+    def each(&block)
+      self.attendees.each(&block)
+    end
 
     def load_attendees (file)
       file.rewind

@@ -1,3 +1,5 @@
+require 'csv'
+
 module EventReporter
   class Attendee
     # takes a CSV Row
@@ -5,9 +7,10 @@ module EventReporter
 
 
     attr_accessor :regdate, :last_name, :first_name, :email, :homephone,
-                  :street, :city, :state, :zipcode
+                  :street, :city, :state, :zipcode, :keys
 
     def initialize(csv_line = {})
+      self.keys = csv_line.headers
       self.regdate = csv_line[:regdate]
       self.last_name = csv_line[:last_name]
       self.first_name = csv_line[:first_name]

@@ -1,76 +1,64 @@
 require 'csv'
+require './event_data_parser'
 module EventReporter
   class Queue
-  # "Queue" acts as a data structure for holding current query results
-  #  queue will act as an array of Attendee objects
+    include Enumerable
+
+    def each(&block)
+      @queue.each(&block)
+    end
 
     def initialize
       @queue = []
     end
 
-    def call(params)
-      "Running Queue sub-function #{params[0]}"
 
-      # clear
-      # print
+
+    def self.call(params)
+      "Running Queue sub-function #{params[0]}"
+      case params[0]
+      when "find" then find(params)
+      when "clear" then clear
+      when "count" then @queue.count
+      when "print" then print
       # save
       # find
+      end
     end
 
     def self.valid_parameters?(parameters)
-      if !%w(count clear print save).include?(parameters[0])
+      if !%w(count clear print save find).include?(parameters[0])
         false
       elsif parameters[0] == "print" 
         parameters.count == 1 || (parameters.count == 3 && parameters[1] == "by")
       elsif parameters[0] == "save"
         parameters.count == 1 || (parameters.count ==3 && parameters[1] == "to")
+      elsif parameters[0] == "find"
+        parameters.count == 3
       else
         true
       end
     end
 
-    def clear
+    def self.print
+      headers = 
     end
 
-    def find ()
+    def self.clear
+      @queue = []
+      puts @queue.inspect
+      return @queue
+    end
+
+    def self.find(params)
+      puts "Going to find based on these params: #{params.join("\t")}"
+      @event_data_parser = params[-1]
+      attribute = params[1].to_s
+      criterion = params[2].to_s
+      @queue = @event_data_parser.select {|attendee| attendee.send(attribute) == criterion}
+      puts @queue[0..10].inspect
+      # puts @queue.inspect
     end
 
   end
 end
-  # def clear
-  #   # wipes the queue (return empty queue object?)
-  # end
-
-  # def print()
-  #   # prints current queue contents - tab-delimited with headers for category
-  #   # if given "attribute", sort by that attribute (array of hashes sorted by hash{:attribute}?)
-
-  #   # XXXEXTENSIONSXXX
-  #   # - format: print in left-aligned cols where col width is == longest_entry.length
-  #   #     -- use "max" to find longest, make ljust based on length of longest
-  #   # - behavior: if queue.length > 10, pause after 10 lines until user input USE SLICE
-  # end
-
-  # def save ("filename.csv")
-  #   # write current queue to file with given name
-  #   # will always be CSV? if so, just take filename?
-
-  #   # XXXEXTENSIONSXXX
-  #   # output: generate files for other filetypes (csv, txt, json, xml)
-  # end
-
-
-  # def find ("attribute", "criteria")
-  #   # **Find is responsible for instantiating queue
-  #   # find records with criteria for attribute & load these into current queue
-  #   # level 1: exact matches
-
-  #   # XXXEXTENSIONSXXX
-  #   # Queue Math
-  #   # - add "subtract"/"add" methods for searching to add or remove matching entries from queue
-  #   # NIGHTMARE FIND
-  #   # - accept multiple params for given attribute; 
-  #   # - OR searches: match either attribute
-  #   # - find within existing queue results (self method? find without wiping queue first?)
-  # end
-# end

@@ -1,0 +1,36 @@
+# def clear
+  #   # wipes the queue (return empty queue object?)
+  # end
+
+  # def print()
+  #   # prints current queue contents - tab-delimited with headers for category
+  #   # if given "attribute", sort by that attribute (array of hashes sorted by hash{:attribute}?)
+
+  #   # XXXEXTENSIONSXXX
+  #   # - format: print in left-aligned cols where col width is == longest_entry.length
+  #   #     -- use "max" to find longest, make ljust based on length of longest
+  #   # - behavior: if queue.length > 10, pause after 10 lines until user input USE SLICE
+  # end
+
+  # def save ("filename.csv")
+  #   # write current queue to file with given name
+  #   # will always be CSV? if so, just take filename?
+
+  #   # XXXEXTENSIONSXXX
+  #   # output: generate files for other filetypes (csv, txt, json, xml)
+  # end
+
+
+  # def find ("attribute", "criteria")
+  #   # **Find is responsible for instantiating queue
+  #   # find records with criteria for attribute & load these into current queue
+  #   # level 1: exact matches
+
+  #   # XXXEXTENSIONSXXX
+  #   # Queue Math
+  #   # - add "subtract"/"add" methods for searching to add or remove matching entries from queue
+  #   # NIGHTMARE FIND
+  #   # - accept multiple params for given attribute; 
+  #   # - OR searches: match either attribute
+  #   # - find within existing queue results (self method? find without wiping queue first?)
+  # end
