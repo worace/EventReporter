@@ -26,8 +26,9 @@ module EventReporter
       elsif command == "queue" && Queue.valid_parameters?(parameters)
         parameters << @attendees if @attendees
         @queue = Queue.call(parameters)
-        # puts @@queue.inspect
-      elsif command == "help" && Help.valid_parameters?(parameters)
+      #Exception for help: allow "bad input" to enter into 
+      #help method, so user can get help
+      elsif command == "help" #&& Help.valid_parameters?(parameters)
           Help.new.help_for(parameters)
       elsif command == "find" && Search.valid_parameters?(parameters)
           Search.new.search_for(parameters)
