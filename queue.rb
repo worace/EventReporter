@@ -15,6 +15,7 @@ module EventReporter
 
 
     def self.call(params)
+      log "starting the Queue#call"
       "Running Queue sub-function #{params[0]}"
       case params[0]
       when "find" then find(params)
@@ -24,6 +25,7 @@ module EventReporter
       # save
       # find
       end
+      log "Ending the Queue#call"
     end
 
     def self.valid_parameters?(parameters)

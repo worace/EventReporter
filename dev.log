@@ -1,0 +1,57 @@
+# Logfile created on 2012-03-14 11:28:04 -0400 by logger.rb/25413
+I, [2012-03-14T11:29:48.281088 #12640]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:29:54.464873 #12640]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:29:54.465098 #12640]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:29:54.478182 #12640]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:29:56.568758 #12640]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:29:56.569010 #12640]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:29:56.571328 #12640]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:29:58.048678 #12640]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:29:58.048892 #12640]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:29:58.049036 #12640]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:30:00.248686 #12640]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:31:07.036113 #12643]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:08.713105 #12643]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:09.528465 #12643]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:14.144084 #12650]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:22.359788 #12650]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:22.360096 #12650]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:32:22.373213 #12650]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:32:32.489746 #12650]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:32.489922 #12650]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:32:32.489998 #12650]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:32:40.033489 #12650]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:32:40.033668 #12650]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:32:40.035103 #12650]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:33:12.738657 #12650]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:33:37.406504 #12652]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:33:42.918261 #12652]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:33:42.918501 #12652]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:33:42.929590 #12652]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:33:49.838078 #12652]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:33:49.838264 #12652]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:33:49.838351 #12652]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:33:55.344402 #12652]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:33:55.344600 #12652]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:33:55.346076 #12652]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:34:14.561059 #12652]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:34:41.541293 #12653]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:34:47.013441 #12653]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:34:47.013746 #12653]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:34:47.026555 #12653]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:34:50.981129 #12653]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:34:50.981309 #12653]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:34:50.981385 #12653]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:34:55.757065 #12653]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:34:55.757271 #12653]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:34:55.758169 #12653]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:36:14.826311 #12653]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:36:19.050103 #12655]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:36:23.761097 #12655]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:36:23.761219 #12655]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:36:23.770493 #12655]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:37:26.165210 #12655]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:42:50.211156 #12655]  INFO -- : Starting a command from CLI.run
+I, [2012-03-14T11:42:50.211371 #12655]  INFO -- : starting the Queue#call
+I, [2012-03-14T11:42:50.212789 #12655]  INFO -- : Ending the Queue#call
+I, [2012-03-14T11:43:52.100187 #12655]  INFO -- : Starting a command from CLI.run

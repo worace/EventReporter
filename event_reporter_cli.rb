@@ -22,6 +22,17 @@ require './queue'
 require './help'
 require './search'
 require './command'
+require 'logger'
+
+module Kernel
+  def log(message)
+    logger.info(message)
+  end
+
+  def logger
+    @@logger ||= Logger.new("dev.log")
+  end
+end
 
 module EventReporter
   class CLI
@@ -42,6 +53,7 @@ module EventReporter
 
       until EXIT_COMMANDS.include?(command)    
         inputs = prompt_user
+        log "Starting a command from CLI.run"
 
         if EXIT_COMMANDS.include?(inputs[0])
           command, parameters = parse_user_input(inputs)
