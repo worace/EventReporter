@@ -15,17 +15,17 @@ module EventReporter
                    "queue" => "The queue contains items from search",
                    "find" => "load the queue with matching records"}
 
-    def self.valid?(command)
+    def valid?(command)
       ALL_COMMANDS.keys.include?(command)
     end
 
-   def self.execute(command, parameters)
+   def execute(command, parameters)
       if command == "load" && EventDataParser.valid_parameters?(parameters)
-        @@attendees = EventDataParser.new(parameters[0])
-        puts "Loaded #{@@attendees.count} attendees!"     
+        @attendees = EventDataParser.new(parameters[0])
+        puts "Loaded #{@attendees.count} attendees!"     
       elsif command == "queue" && Queue.valid_parameters?(parameters)
-        parameters << @@attendees if @@attendees
-        @@queue = Queue.call(parameters)
+        parameters << @attendees if @attendees
+        @queue = Queue.call(parameters)
         # puts @@queue.inspect
       elsif command == "help" && Help.valid_parameters?(parameters)
           Help.new.help_for(parameters)
@@ -36,7 +36,7 @@ module EventReporter
       end
     end
 
-    def self.error_message(command)
+    def error_message(command)
       "Sorry, you specified invalid arguments for #{command}"
     end
 
