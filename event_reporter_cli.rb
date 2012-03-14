@@ -21,7 +21,7 @@ require './event_data_parser'
 require './queue'
 require './help'
 require './search'
-require './command'
+require './session'
 
 module EventReporter
   class CLI
@@ -39,7 +39,7 @@ module EventReporter
     def self.run
       puts "Welcome to the EventReporter"
       command = ""
-      @reporter = Command.new
+      @reporter = Session.new
       until EXIT_COMMANDS.include?(command)    
         inputs = prompt_user
 

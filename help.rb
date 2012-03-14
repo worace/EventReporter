@@ -1,4 +1,4 @@
-require './command'
+require './session'
 
 module EventReporter
   class Help
@@ -7,11 +7,11 @@ module EventReporter
      "queue count"    => "Type 'queue count' to display the number of records currently in the queue.",
      "queue clear"    => "Type 'queue clear' to empty the queue.",
      "queue print"    => "Type 'queue print' to display all records in the queue.",
+     "queue find"     => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
      "queue print by" => "Type 'queue print by <attribute>' to display all records in the queue, sorted by the specified attribute.",
      "queue save to"  => "Type 'queue save to <filename>' to export the current queue to a CSV file.",
-     "queue"          => "The queue contains items from searches",
+     "queue"          => "The queue contains records from previous searches.",
      "find"           => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
-     "queue find"     => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
      "quit"           => "Type 'quit' or 'exit' to leave EventReporter."
      }
 
@@ -22,10 +22,6 @@ module EventReporter
       else
         "Here are some available commands: #{HELP.keys.join(" | ")} \n Type 'help <command>' for more info."
       end
-    end
-
-    def self.valid_parameters?(parameters)
-      parameters.empty? || HELP.keys.include?(parameters.join(" "))
     end
 
   end
