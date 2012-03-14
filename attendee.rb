@@ -4,7 +4,8 @@ module EventReporter
   class Attendee
     # takes a CSV Row
     # assigns to appropriate instance variables
-
+    DEFAULT_KEY_ORDER = [:regdate, :last_name, :first_name, :email_address,
+        :homephone, :street, :city, :state, :zipcode, :keys]
 
     attr_accessor :regdate, :last_name, :first_name, :email_address, :homephone,
                   :street, :city, :state, :zipcode, :keys
@@ -48,6 +49,11 @@ module EventReporter
       #   Thus avoid annoying mismatch of keys etc.
       values = @keys[1..-1].collect{|key| self.send(key)}
     end
+
+    def to_s (key_order=DEFAULT_KEY_ORDER)
+      attendee_strings = key_order[1..-1].collect{|key| self.send(key)}
+    end
+
   end
 
   class RegDate

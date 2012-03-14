@@ -40,11 +40,12 @@ module EventReporter
       end
     end
 
-    def self.print
+    def self.print (params=[])
       headers = @queue.first.keys
-      puts headers
+      headers.each {|header| printf header.to_s.ljust(20)}
       @queue.each do |attendee|
-        puts attendee.values.join["\t"]
+        attendee.values.each {|value| printf value.to_s.ljust(10)}
+      # each{|value| print value.ljust(15)}
       end
     end
 

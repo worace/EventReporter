@@ -32,8 +32,8 @@ module EventReporter
     end
 
     def self.prompt_user
-        puts "enter command > "
-        inputs = gets.strip.split
+      puts "enter command > "
+      gets.strip.split
     end
 
     def self.run
