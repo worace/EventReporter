@@ -50,30 +50,45 @@ module EventReporter
 
     def self.simple_print (params=[])
       unless @queue.empty?
-        paddings = {}
-        # debugger
-        @queue.first.keys.each do |key|
-          @queue.sort_by{|attendee| attendee.send(key).length if attendee}
-          paddings[key] = @queue.last.send(key).length
-        end
-
-        headers = @queue.first.keys
-        headers.each do |header|
-          printf header.to_s.rjust(paddings[header.to_sym].to_i + 9)
-        end
-        puts ""
-        @queue.each do |attendee|
-          attendee.keys.each do |key|
-            printf attendee.send(key).rjust(paddings[key.to_sym].to_i + 9)
-          end
-          puts "\n"
-        end
+        paddings = set_paddings
+        print_headers(paddings)
+        print_attendees(paddings)
       else
-        HEADERS.each do|header|
-          printf header.to_s.rjust(header.to_s.length + 9)
-        end
-        puts "\n\n\t\tNO ATTENDEES TO DISPLAY"
+        empty_print
       end
+    end
+
+    def self.print_headers(paddings)
+      headers = @queue.first.keys
+      headers.each do |header|
+          printf header.to_s.rjust(paddings[header.to_sym].to_i + 9)
+      end
+      puts ""
+    end
+
+    def self.print_attendees(paddings)
+      @queue.each do |attendee|
+        attendee.keys.each do |key|
+          printf attendee.send(key).rjust(paddings[key.to_sym].to_i + 9)
+        end
+        puts "\n"
+      end
+    end
+
+    def self.set_paddings
+      paddings = {}
+      @queue.first.keys.each do |key|
+        @queue.sort_by{|attendee| attendee.send(key).length if attendee}
+        paddings[key] = @queue.last.send(key).length
+      end
+      paddings
+    end
+
+    def self.empty_print
+      HEADERS.each do|header|
+          printf header.to_s.rjust(header.to_s.length + 9)
+      end
+      puts "\n\n\t\tNO ATTENDEES TO DISPLAY"
     end
 
     def self.print_by(params)

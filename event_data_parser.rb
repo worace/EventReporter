@@ -26,7 +26,7 @@ module EventReporter
 
     def print_attendees
       self.attendees[0..10].each do |attendee|
-        puts [attendee.full_name, attendee.zipcode, 
+        puts [attendee.full_name, attendee.zipcode,
               attendee.phone_number.to_s, attendee.state].join("\t")
       end
     end

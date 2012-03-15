@@ -1,7 +1,6 @@
 require './event_data_parser'
 require './queue'
 require './help'
-require './search'
 require 'ruby-debug'
 
 # Processes input queue find last_name Williams as follows:

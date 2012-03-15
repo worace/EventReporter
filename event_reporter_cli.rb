@@ -1,7 +1,6 @@
 require './event_data_parser'
 require './queue'
 require './help'
-require './search'
 require './session'
 
 module EventReporter
