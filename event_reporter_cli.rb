@@ -49,7 +49,7 @@ module EventReporter
         elsif inputs.any?
           command, parameters = parse_user_input(inputs)
           result = @reporter.execute(command, parameters)
-          puts result
+          puts result if result.is_a?(String)
         else
           puts "No command entered."
         end

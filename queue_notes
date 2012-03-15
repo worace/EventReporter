@@ -1,14 +1,5 @@
-# def clear
-  #   # wipes the queue (return empty queue object?)
-  # end
-
-  # def print()
-  #   # prints current queue contents - tab-delimited with headers for category
-  #   # if given "attribute", sort by that attribute (array of hashes sorted by hash{:attribute}?)
-
   #   # XXXEXTENSIONSXXX
-  #   # - format: print in left-aligned cols where col width is == longest_entry.length
-  #   #     -- use "max" to find longest, make ljust based on length of longest
+
   #   # - behavior: if queue.length > 10, pause after 10 lines until user input USE SLICE
   # end
 

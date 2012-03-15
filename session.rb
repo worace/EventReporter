@@ -35,8 +35,7 @@ module EventReporter
       #help method, so user can get help
       elsif command == "help" #&& Help.valid_parameters?(parameters)
           Help.new.help_for(parameters)
-      elsif command == "find" && Search.valid_parameters?(parameters)
-          Search.new.search_for(parameters)
+      elsif command == "add" && Queue.valid_parameters?(parameters[1..-1])
       else
         error_message(command)
       end
