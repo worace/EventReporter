@@ -101,21 +101,29 @@ module EventReporter
     def self.save_to(params)
     #expect filename as last param
       unless @queue.empty?
-        CSV.open(params[2].to_s, "w",
-          {:headers => true, :header_converters => :symbol}) do |output|
+        normal_save(params)
+      else
+        empty_save(params)
+      end
+    end
+
+    def self.normal_save(params)
+      CSV.open(params[2].to_s, "w",
+        {:headers => true, :header_converters => :symbol}) do |output|
           output << @queue.first.keys
           @queue.each do |attendee|
             output << attendee.keys.collect {|key| attendee.send(key)}
           end
-          puts "Wrote Data to #{params[2]}"
         end
-      else
-        CSV.open(params[2].to_s, "w",
+      puts "Wrote Data to #{params[2]}"
+    end
+
+    def self.empty_save(params)
+      CSV.open(params[2].to_s, "w",
           {:headers => true, :header_converters => :symbol}) do |output|
           output << HEADERS
           end
           puts "Wrote Data to #{params[2]}"
-      end
     end
   end
 end
