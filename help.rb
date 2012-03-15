@@ -3,17 +3,17 @@ require './session'
 module EventReporter
   class Help
     HELP = {
-     "load"           => "Type 'load <filename.csv>' to load a new file.",
-     "queue count"    => "Type 'queue count' to display the number of records currently in the queue.",
-     "queue clear"    => "Type 'queue clear' to empty the queue.",
-     "queue print"    => "Type 'queue print' to display all records in the queue.",
-     "print"    => "Type 'queue print' to display all records in the queue.",
-     "queue find"     => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
-     "queue print by" => "Type 'queue print by <attribute>' to display all records in the queue, sorted by the specified attribute.",
-     "queue save to"  => "Type 'queue save to <filename>' to export the current queue to a CSV file.",
-     "queue"          => "The queue contains records from previous searches.",
-     "find"           => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
-     "quit"           => "Type 'quit' or 'exit' to leave EventReporter."
+    "load" => "Type 'load <filename.csv>' to load a new file.",
+    "queue count" => "Type 'queue count' to show # of queue results.",
+    "queue clear" => "Type 'queue clear' to empty the queue.",
+    "queue print" => "Type 'queue print' to display all records in the queue.",
+    "print" => "Type 'queue print' to display all records in the queue.",
+    "queue find" => "Type 'queue find <attribute> <value>' to find matches",
+    "queue print by" => "'queue print by <attribute>' prints sorted results",
+    "queue save to" => "Type 'queue save to <filename>' to export a CSV",
+    "queue" => "The queue contains records from previous searches.",
+    "find" => "Type 'queue find <attribute> <value>' to find matching entries",
+    "quit" => "Type 'quit' or 'exit' to leave EventReporter."
      }
 
 
@@ -21,7 +21,7 @@ module EventReporter
       if parameters.count > 0 && HELP.keys.include?(parameters.join(" "))
         HELP[parameters.join(" ")]
       else
-        "Here are some available commands: #{HELP.keys.join(" | ")} \n Type 'help <command>' for more info."
+        "Here are some available commands: #{HELP.keys.join(" | ")} \n"
       end
     end
 

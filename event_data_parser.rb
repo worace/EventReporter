@@ -20,15 +20,14 @@ module EventReporter
       load_attendees(CSV.open(filename, CSV_OPTIONS))
     end
 
-
     def self.valid_parameters?(parameters)
       parameters.count == 1 && parameters[0] =~ /csv$/
     end
 
     def print_attendees
       self.attendees[0..10].each do |attendee|
-        puts [attendee.full_name, attendee.zipcode, attendee.phone_number.to_s, 
-          attendee.state].join("\t")
+        puts [attendee.full_name, attendee.zipcode, 
+              attendee.phone_number.to_s, attendee.state].join("\t")
       end
     end
 

@@ -29,25 +29,25 @@ module EventReporter
     def execute(command, params)
       @attendees = [] unless @attendees
       if command == "load" && EventDataParser.valid_parameters?(params)
-        @attendees = EventDataParser.new(params[0])
-        puts "Loaded #{@attendees.count} attendees!"  
-        @queue = Queue.call(["clear"])
+        load(params[0])
       elsif command == "load" && params.count == 0
-        @attendees = EventDataParser.new("event_attendees.csv")
-        @queue = Queue.call(["clear"])
-        puts "Loaded #{@attendees.count} attendees!"  
-      elsif command == "queue" && Queue.valid_parameters?(params)
+        load()
+      elsif command == "queue" && Queue.valid_params?(params)
         @queue = Queue.call(params)
-      elsif command == "find" && Queue.valid_parameters?(params.unshift("find"))
+      elsif command == "find" && Queue.valid_params?(params.unshift("find"))
         @queue = Queue.call(params, @attendees)
-      #Exception for help: allow "bad input" to enter into 
-      #help method, so user can get help
-      elsif command == "help" #&& Help.valid_parameters?(parameters)
+      elsif command == "help"
           Help.new.help_for(params)
       elsif command == "add" && Queue.valid_parameters?(parameters[1..-1])
       else
         error_message(command)
       end
+    end
+
+    def load (filename = "event_attendees.csv")
+      @attendees = EventDataParser.new(filename)
+      puts "Loaded #{@attendees.count} attendees!"
+      @queue = Queue.call(["clear"])
     end
 
     def error_message(command)

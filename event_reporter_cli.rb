@@ -1,22 +1,3 @@
-# COMMANDS
-# load <filename>
-# queue COUNT
-# queue CLEAR
-# queue PRINT
-# queue PRINT by <attribute>
-# queue SAVE to <filename>
-# find <attribute> <criteria>
-# help
-# Generic Form:
-# First Position          Second Position
-# [load|help|queue|find] (filename|command|count|clear|print|save|attribute)
-# Imagined uses (starters)
-# load event_attendees.csv
-# help
-# help load
-# help queue
-# 
-# dividing: split? reg ex? 
 require './event_data_parser'
 require './queue'
 require './help'
@@ -38,24 +19,26 @@ module EventReporter
 
     def self.run
       puts "Welcome to the EventReporter"
-      command = ""
+      @command = ""
       @reporter = Session.new
-      until EXIT_COMMANDS.include?(command)    
-        inputs = prompt_user
-
-        if EXIT_COMMANDS.include?(inputs[0])
-          command, parameters = parse_user_input(inputs)
-          puts "Goodbye"
-        elsif inputs.any?
-          command, parameters = parse_user_input(inputs)
-          result = @reporter.execute(command, parameters)
-          puts result if result.is_a?(String)
-        else
-          puts "No command entered."
-        end
+      until EXIT_COMMANDS.include?(@command)
+        command_loop
       end
     end
 
+    def self.command_loop
+      inputs = prompt_user
+      if EXIT_COMMANDS.include?(inputs[0])
+        @command, parameters = parse_user_input(inputs)
+        puts "Goodbye"
+      elsif inputs.any?
+        @command, parameters = parse_user_input(inputs)
+        result = @reporter.execute(@command, parameters)
+        puts result if result.is_a?(String)
+      else
+        puts "No command entered."
+      end
+    end
   end
 end
 
