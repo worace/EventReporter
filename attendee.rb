@@ -3,13 +3,12 @@ require 'ruby-debug'
 
 module EventReporter
   class Attendee
-    # takes a CSV Row
-    # assigns to appropriate instance variables
+    #constant to define Keys array matching CSV Headers
     KEYS = [:regdate, :last_name, :first_name, :email_address,
         :homephone, :street, :city, :state, :zipcode]
 
-    attr_accessor :regdate, :last_name, :first_name, :email_address, :homephone,
-                  :street, :city, :state, :zipcode, :keys
+    attr_accessor :regdate, :last_name, :first_name, :email_address,
+                  :homephone, :street, :city, :state, :zipcode, :keys
 
     def initialize(csv_line = {})
       self.keys = KEYS
@@ -25,13 +24,6 @@ module EventReporter
     end
 
     def values
-      # SHADETREE MECHANICS:
-      # First key is a blank space, so skip it
-      # attr accessors up top ^^^ have to exact match to CSV headers
-      #   else self.send(key) will throw NoMethodError
-      # SOL'N - Dynamic generation of attr_accessors based on 
-      #   CSV Headers; initialize based on same
-      #   Thus avoid annoying mismatch of keys etc.
       values = @keys.collect{|key| self.send(key)}
     end
 
@@ -41,20 +33,12 @@ module EventReporter
 
     def to_hash
       attendee = self.keys {|key| attendee[key] = self.send(key)}
-      # {:last_name      => @last_name,
-      #  :first_name     => @first_name,
-      #  :email_address  => @email_address,
-      #  :homephone      => @homephone,
-      #  :street         => @street,
-      #  :city           => @city,
-      #  :state          => @state,
-      #  :zipcode        => @zipcode}
-    end 
+    end
 
     def clean_zipcode(zipcode)
       zipcode.to_s.rjust(5, "0")
     end
-
+    
     def clean_phone_number(phone_number)
       clean = phone_number.scan(/\d/).join
       #check length
@@ -83,22 +67,6 @@ module EventReporter
     def clean_state(state)
       state.to_s[0..1].upcase
     end
-
-    # def full_name
-    #   [first_name, last_name].join(" ")
-    # end
-
-    # def zipcode
-    #   Zipcode.clean(@zipcode)
-    # end
-
-    # def phone_number
-    #   PhoneNumber.new(@homephone)
-    # end
-
-    # def state
-    #   State.clean(@state)
-    # end
 
   end
 

@@ -21,10 +21,6 @@ module EventReporter
     end
 
 
-    def self.load(filename)
-      puts "Loading data from #{filename}"
-    end
-
     def self.valid_parameters?(parameters)
       parameters.count == 1 && parameters[0] =~ /csv$/
     end

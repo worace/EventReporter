@@ -7,6 +7,7 @@ module EventReporter
      "queue count"    => "Type 'queue count' to display the number of records currently in the queue.",
      "queue clear"    => "Type 'queue clear' to empty the queue.",
      "queue print"    => "Type 'queue print' to display all records in the queue.",
+     "print"    => "Type 'queue print' to display all records in the queue.",
      "queue find"     => "Type 'queue find <attribute> <value>' to return all entries whose <attribute> matches the <value> ",
      "queue print by" => "Type 'queue print by <attribute>' to display all records in the queue, sorted by the specified attribute.",
      "queue save to"  => "Type 'queue save to <filename>' to export the current queue to a CSV file.",

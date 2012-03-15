@@ -2,10 +2,11 @@ require './event_data_parser'
 require './queue'
 require './help'
 require './search'
+require 'ruby-debug'
 
 # Processes input queue find last_name Williams as follows:
 # command = "queue"
-# parameters = ["find", "last_name", "Williams", @attendees]
+# params = ["find", "last_name", "Williams", @attendees]
 # where @attendees is an EventDataParser based off of loaded CSV file
 
 module EventReporter
@@ -24,17 +25,25 @@ module EventReporter
       ALL_COMMANDS.keys.include?(command)
     end
 
-   def execute(command, parameters)
-      if command == "load" && EventDataParser.valid_parameters?(parameters)
-        @attendees = EventDataParser.new(parameters[0])
-        puts "Loaded #{@attendees.count} attendees!"     
-      elsif command == "queue" && Queue.valid_parameters?(parameters)
-        parameters << @attendees if @attendees
-        @queue = Queue.call(parameters)
+
+    def execute(command, params)
+      @attendees = [] unless @attendees
+      if command == "load" && EventDataParser.valid_parameters?(params)
+        @attendees = EventDataParser.new(params[0])
+        puts "Loaded #{@attendees.count} attendees!"  
+        @queue = Queue.call(["clear"])
+      elsif command == "load" && params.count == 0
+        @attendees = EventDataParser.new("event_attendees.csv")
+        @queue = Queue.call(["clear"])
+        puts "Loaded #{@attendees.count} attendees!"  
+      elsif command == "queue" && Queue.valid_parameters?(params)
+        @queue = Queue.call(params)
+      elsif command == "find" && Queue.valid_parameters?(params.unshift("find"))
+        @queue = Queue.call(params, @attendees)
       #Exception for help: allow "bad input" to enter into 
       #help method, so user can get help
       elsif command == "help" #&& Help.valid_parameters?(parameters)
-          Help.new.help_for(parameters)
+          Help.new.help_for(params)
       elsif command == "add" && Queue.valid_parameters?(parameters[1..-1])
       else
         error_message(command)
@@ -42,7 +51,7 @@ module EventReporter
     end
 
     def error_message(command)
-      "Sorry, you specified invalid arguments for #{command}"
+        "Sorry, you specified invalid arguments for #{command}"
     end
 
   end
